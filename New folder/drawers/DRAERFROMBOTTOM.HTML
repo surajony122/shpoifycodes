@@ -1,0 +1,129 @@
+
+
+
+    <style>
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .drawer1 {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background-color: #FFF8F2;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            transition: bottom 1s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .drawer1.open {
+            bottom: 0;
+        }
+
+        ul.mn {
+            display: grid;
+            padding: 0;
+            gap: 5px;
+            /* flex-direction: column; */
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .mn li {
+            width: 100%;
+            text-align: center;
+            list-style: none;
+        }
+
+        .mn img {
+            border: 1px solid #FF9700;
+            border-radius: 5px;
+        }
+
+        .mn h1 {
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        #closedrawer1Button1 {
+            position: absolute;
+            right: 5px;
+            padding: 5px 7px;
+            top: 2px;
+            border-radius: 50px;
+            font-size: 12px;
+
+        }
+
+        .m-menu-mobile__item>a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-grow: 1;
+            padding: 12px 16px;
+            z-index: -1;
+            position: relative;
+        }
+    </style>
+    <button id="opendrawer1Button">▽</button>
+
+    <div id="drawer1" class="drawer1">
+        <button id="closedrawer1Button1">
+            X
+        </button>
+
+        <ul class="mn">
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const opendrawer1Button = document.getElementById('opendrawer1Button');
+            const closedrawer1Button = document.getElementById('closedrawer1Button1');
+            const drawer1 = document.getElementById('drawer1');
+
+            opendrawer1Button.addEventListener('click', () => {
+                drawer1.classList.add('open');
+            });
+
+            closedrawer1Button.addEventListener('click', () => {
+                drawer1.classList.remove('open');
+            });
+
+            document.addEventListener('click', (event) => {
+                if (!drawer1.contains(event.target) && !opendrawer1Button.contains(event.target)) {
+                    drawer1.classList.remove('open');
+                }
+            });
+        });
+
+    </script>
+
+

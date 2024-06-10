@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="main">
+        <!-- <li class="main-li"></li> -->
+        <li class="main-li">
+            <ul class="main-link1">
+                <li><a href="https://www.one0eight.in/">Home</a></li>
+                <li><a href="https://www.one0eight.in/collections/all">Shop</a></li>
+                <li><a href="https://www.one0eight.in/pages/about-us">About</a></li>
+                <li><a href="https://www.one0eight.in/pages/contact">Contact</a></li>
+                
+            </ul>
+            <!-- <ul class="main-link">
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>    -->
+            <ul class="main-link2" style="grid-column: 1 / span 2;">
+                <li><a href="#">Shipping & Return </a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </li>
+        <li class="main-li hide">
+            <img class="img" width="50%" src="https://cdn.shopify.com/s/files/1/0841/1139/3068/files/LOGOtransparentwebsite.png?v=1713952303" alt="">
+        </li>
+    </ul>
+    <div class="insta">
+        <a href="https://www.instagram.com/1o8___/?hl=en"><i class="ri-instagram-line"></i></a>
+        <!-- <img src="https://cdn.shopify.com/s/files/1/0841/1139/3068/files/icons8-instagram-logo-48.png?v=1714386610" alt=""> -->
+        
+    </div>
+    <style>
+      .main-link2{
+        margin-top: 10px;
+      }
+        .main{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0;
+            background-color: rgb(50,60,64);
+        }
+        .main ul{
+            list-style: none;
+        }
+        ul.main-link1 {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+}
+ul.main-link2 li {
+    width: 100%  !important;
+}
+.main-li ul{
+    padding: 0;
+}
+         .main-li{
+            display: grid;
+            overflow: hidden;
+            
+         padding: 20px 0 20px 20px;
+
+         }
+         .main-li a{
+            text-decoration: none;
+            color: white;
+font-size: 12px
+         }
+      
+        .main-li ul li{
+            width: 50%;
+        }
+        .img{
+            width: 130%;
+    overflow: hidden;
+    position: relative;
+    left: 40px;
+    
+        }
+        .insta img{
+            filter: invert(9);
+        }
+        .insta{
+            background-color: black;
+            justify-content: center;
+            text-align: center;
+        }
+        .insta a{
+            color: white;
+            text-decoration: none;
+        }
+        @media only screen and (min-width: 678px) {
+            /* .main {
+    display: grid;
+    grid-template-columns:1fr;
+    padding: 0;
+    background-color: rgb(50, 60, 64);
+} */
+/* .main-li ul {
+    display: flex;
+    flex-direction: column;
+}
+            .main-li ul li{
+            width: 50%;
+        }
+            .img{
+            width: 100%;
+        left: 0;} */
+      /* .hide img{
+       display: none;
+
+      } */
+      .main-link2{
+        margin-top: 0px;
+      }
+    .main-li {
+      display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 20px;
+   
+} 
+.main-li a{
+  font-size: 20px;
+  color: black;
+}
+      .main{
+        align-items: center;
+       /* background-image: url('https://cdn.shopify.com/s/files/1/0841/1139/3068/files/cover_pic_3_1.png?v=1714388468'); */
+        background-size: cover;
+        background-repeat: no-repeat ;
+        background-position: center;
+        background-position: right;
+        /* height: 350px; */
+        background: linear-gradient(90deg, transparent, black);
+      }
+      ul.main-link1 {
+        display: flex;
+        width: 50%;
+        flex-wrap: wrap;
+}
+      .hide{
+        display: flex;
+    justify-content: flex-end;
+      }
+   
+      .img{
+            width: 100%;
+            left: 0;
+           }
+      /* .main-li{
+            display: flex;
+            overflow: auto;}*/
+        } 
+       
+    </style>
+</body>
+</html>

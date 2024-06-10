@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <style>
+        * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1B2C34;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.imgSliderWrapp {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 800px; 
+}
+
+.container {
+  position: relative;
+  width: 800px;
+  height: 450px; 
+}
+
+.img-afterWrap, .img-beforeWrap {
+  position: absolute;
+  width: 800px;
+  height: 450px;
+}
+
+.img-beforeWrap {
+  overflow: hidden;
+  width: 450px; 
+}
+
+img {
+  width: 800px;
+  height: 450px;
+  object-fit: cover;
+}
+
+.sliderIndicator {
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background-color: #1B2C34;
+  z-index: 30;
+}
+
+@media (max-width: 800px) {
+  .imgSliderWrapp, .container, .img-afterWrap, .img-beforeWrap, img {
+    width: 100vw;
+    height: calc(100vw * (9 / 16)); 
+  }
+  
+  .img-beforeWrap {
+    width: 50vw; 
+  }
+}
+    </style>
+    <script>
+        const ImageSlider = () => {
+  const sliderRef = React.useRef(null);
+  const beforeRef = React.useRef(null);
+  const containerRef = React.useRef(null);
+
+  const [sliderWidth, setSliderWidth] = React.useState(0);
+
+  const updateSliderPosition = React.useCallback((e) => {
+    const containerRect = containerRef.current.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const sliderPosition = clientX - containerRect.left;
+    setSliderWidth(Math.max(0, Math.min(sliderPosition, containerRect.width)));
+  }, []);
+
+  React.useEffect(() => {
+    const handleMouseMove = (e) => updateSliderPosition(e);
+    const handleTouchMove = (e) => updateSliderPosition(e);
+    const container = containerRef.current;
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [updateSliderPosition]);
+
+  React.useEffect(() => {
+    const containerWidth = containerRef.current.offsetWidth;
+    setSliderWidth(containerWidth / 2);
+  }, []);
+
+  React.useEffect(() => {
+    if (sliderRef.current && beforeRef.current) {
+      beforeRef.current.style.width = `${sliderWidth}px`;
+      sliderRef.current.style.left = `${sliderWidth}px`;
+    }
+  }, [sliderWidth]);
+
+  return (
+    <div className="imgSliderWrapp">
+      <div className="container" ref={containerRef}>
+        <div className="img-afterWrap">
+          <img src="https://images.unsplash.com/photo-1463438690606-f6778b8c1d10?auto=format&fit=crop&w=1974&ixlib=rb-4.0.3" alt="After" />
+        </div>
+        <div className="img-beforeWrap" ref={beforeRef}>
+          <img src="https://images.unsplash.com/photo-1706820642455-12b6d3ea4a66?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MTIzNjgzMDB8&ixlib=rb-4.0.3&q=85" alt="Before" />
+        </div>
+        <div className="sliderIndicator" ref={sliderRef}></div>
+      </div>
+    </div>
+  );
+};
+
+ReactDOM.render(<ImageSlider />, document.getElementById('root'));
+
+    </script>
+</body>
+</html>

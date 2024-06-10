@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/awakenning" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        /* Your existing CSS styles */
+        .container1{
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+  position: relative;
+  overflow: hidden;
+    width: 100%;
+    height: 500px;
+    background: #ffffff;
+    /* box-shadow: 0 30px 50px #dbdbdb; */
+}
+
+.container1 .slide1 .item{
+    width: 220px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(220%, -50%);
+    border-radius: 20px;
+    box-shadow: 0 30px 50px #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.slide1 .item:nth-child(1),
+.slide1 .item:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.slide1 .item:nth-child(3){
+    left: 50%;
+    opacity: 0;
+}
+.slide1 .item:nth-child(4){
+    left: calc(50% + 220px);
+          background-position: left
+  
+}
+.slide1 .item:nth-child(5){
+    left: calc(50% + 460px);
+}
+
+/* here n = 0, 1, 2, 3,... */
+.slide1 .item:nth-child(n + 6){
+    left: calc(50% + 660px);
+    opacity: 0;
+}
+
+
+
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 100px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+
+
+.slide1 .item:nth-child(2) .content{
+    display: block;
+}
+
+
+.content .name{
+    font-size: 40px;
+    text-transform: capitalize;
+    font-weight: bold;
+    opacity: 0;
+    animation: animate 1s ease-in-out 1 forwards;
+}
+
+.content .des{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.3s 1 forwards;
+}
+
+.content button{
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    animation: animate 1s ease-in-out 0.6s 1 forwards;
+}
+
+
+@keyframes animate {
+    from{
+        opacity: 0;
+        transform: translate(0, 100px);
+        filter: blur(33px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translate(0);
+        filter: blur(0);
+    }
+}
+
+
+
+.button1{
+    width: 100%;
+    text-align: center;
+    /* position: absolute;
+    bottom: 20px; */
+}
+
+.button1 button{
+    width: 40px;
+    height: 35px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    border: 1px solid #000;
+    transition: 0.3s;
+}
+
+.button1 button:hover{
+    background: #ababab;
+    color: #fff;
+}
+img.demo.cursor {
+    position: absolute;
+    left: 90%;
+    top: -49%;
+    border-radius: 10%;
+    height: 20px;
+    width: 200px !important;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    transform: translate(330%, -50%);
+    border-radius: 20px;
+}
+      @media only screen and (max-width: 678px){
+      
+        img.demo.cursor {
+            width: 100px !important;
+    height: 150px;
+    position: absolute;
+    top: 100%;
+          left:50%;
+          border:1px solid white;
+    transform: translate(80%, -138%);
+   border-radius: 5px;
+        box-shadow: 1px 1px 1px #ffffff;
+    /* background-position: 50% 50%; */
+    background-size: cover;
+    display: inline-block;
+    transition: 0.5s;
+}
+        
+   .container1{
+     overflow: hidden;
+     /* height: 700px */
+   }
+        /* .content img{
+          display: none
+        } */
+
+        .content ul{
+            list-style: none;
+            /* display: inline; */
+        }
+        .content ul li {
+            list-style: none;
+            width: 50%;
+        }
+        .content .name {
+    font-size: 28px;}
+        
+        .slide1 .item:nth-child(2) .content {
+    display: block;
+    position: absolute;
+    width: 100%;
+    /* bottom: 118%; */
+    left: 0;
+    background: linear-gradient(360deg, black, transparent);
+    transform: translateY(70px);
+    padding: 10px 10px 45px 10px;
+}
+        .slide1 .item:nth-child(3) {
+    left: 0;
+    opacity: 1;
+}
+        .slide1 .item:nth-child(4) {
+    left: calc(50% + 278px);
+    /* opacity: 0; */
+}
+        /* .slide1 .item:nth-child(5) {
+    left: 66%;
+} */
+        .slide1 .item:nth-child(n + 6) {
+    left: calc(50% + 660px);
+    opacity: 0;
+    display: none !important;
+}
+        .button1 {
+    width: 100%;
+    text-align: center;
+    /* position: absolute;
+    bottom: -200px; */
+          margin:50px 0 
+}
+        .container1 .slide1 .item {
+    width: 150px;
+    height: 200px;
+    position: absolute;
+    top: 100%;
+    transform: translate(300%, -120%);
+    border-radius: 20px;
+    box-shadow: 0 0 0 0 #505050;
+    background-position: 50% 50%;
+    background-size: cover;
+    display: inline-block;
+    transition: 1.2s;
+}
+        .slide1 .item:nth-child(1),
+.slide1 .item:nth-child(2){
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+.item .content{
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    width: 300px;
+    text-align: left;
+    color: #eee;
+    transform: translate(0, -50%);
+    font-family: system-ui;
+    display: none;
+}
+     .des{
+       font-size:12px;
+       width:65%;
+       margin-bottom:3px !important;
+       height:65px;
+     }
+}
+      .a-section {
+    /* padding: 3em 3% 0; */
+        margin-top:-10px;
+        background-color: #090708;
+}
+.a-section-marquee-box {
+    height: 20px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  padding:25px 10px ;
+  /* border-top:1px solid black;
+  border-bottom:1px solid black; */
+    /* border: 1px solid #181818;  */
+}
+.a-section-marquee-box .marquee-text {
+    white-space: nowrap;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 100;
+  font-style: italic;
+    flex-shrink: 0;
+    padding: 0 5px;
+    /* font-family: 'Public Sans', sans-serif; */
+   font-family: 'AWAKENNING', sans-serif;
+  color:white;
+    /* width: max-content; */
+    display: flex;
+    align-items: center;
+    transform: translateX(0);
+    animation: a-text-scroll 10s linear infinite;
+}
+@keyframes a-text-scroll {
+    0% { transform: translate3d(-100%, 0, 0); }
+    100% { transform: translate3d(0%, 0, 0); }
+}
+    
+.slide-animation {
+            animation: slide-ease-in-out 0.5s ease-in-out;
+        }
+        @keyframes slide-ease-in-out {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container1">
+        <div class="slide1">
+
+            
+            <div class="item" style="background-image: url(https://www.one0eight.in/cdn/shop/files/sanchitads1.png);">
+                <div class="content">
+                    <img class="demo cursor" src="https://cdn.shopify.com/s/files/1/0841/1139/3068/files/New_Project_16.png?v=1713618433" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                    <div class="name">Indic Varsity</div>
+                    <div class="des">The <b>Bhagavad Gita's wisdom</b> graces the left pocket, whispering timeless truths</div>
+                    <button><a style="text-decoration: none; color: black" href="https://www.one0eight.in/products/indic-varsity">Shop Now</a></button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://www.one0eight.in/cdn/shop/files/1new.png);">
+                <div class="content">
+                    <img class="demo cursor" src="https://cdn.shopify.com/s/files/1/0841/1139/3068/files/New_Project_11.png?v=1713617754" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                    <div class="name">Maryada Tee</div>
+                    <div class="des">Kuch banna ho toh Ram bano</div>
+                    <button><a style="text-decoration: none; color: black" href="https://www.one0eight.in/products/maryada-tee">Shop Now </a></button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://cdn.shopify.com/s/files/1/0841/1139/3068/files/shivraudr_design_1.png?v=1713533915);">
+                <div class="content">
+                    <img class="demo cursor" src="https://cdn.shopify.com/s/files/1/0841/1139/3068/files/New_Project_12.png?v=1713617800" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                    <div class="name">Shivraudr</div>
+                    <div class="des">Fury personified through our Pashupathi Nath</div>
+                    <button><a style="text-decoration: none; color: black" href="https://www.one0eight.in/products/shivraudr">Shop Now</a></button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://www.one0eight.in/cdn/shop/files/6.2.png?v=1709926664);">
+                <div class="content">
+                    <img class="demo cursor" src="https://cdn.shopify.com/s/files/1/0841/1139/3068/files/New_Project_13.png?v=1713617890" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                    <div class="name">NidraShankar</div>
+                    <div class="des">"NidraShankar" - Resting Serenity</div>
+                    <button><a style="text-decoration: none; color: black" href="https://www.one0eight.in/products/nidrashankar-tee">Shop Now</a></button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://www.one0eight.in/cdn/shop/files/3_2.jpg);">
+                <div class="content">
+                    <img class="demo cursor" src="https://cdn.shopify.com/s/files/1/0841/1139/3068/files/New_Project_14.png?v=1713618123" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                    <div class="name">Maryada Jumper</div>
+                    <div class="des">Kuch banna ho toh Ram bano</div>
+                    <button><a style="text-decoration: none; color: black" href="https://www.one0eight.in/products/the-maryada-jumper">Shop Now</a></button>
+                </div>
+            </div>
+          <div class="item" style="background-image: url(https://cdn.shopify.com/s/files/1/0841/1139/3068/files/product_1.png?v=1713592483);">
+                <div class="content">
+                    <img class="demo cursor" src="https://cdn.shopify.com/s/files/1/0841/1139/3068/files/New_Project_15.png?v=1713618272" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                    <div class="name">Shantamurti </div>
+                    <div class="des">Shantamurti :  "Shantamurti" essentially translates to "the peaceful form" or "the calm embodiment."</div>
+              <button><a style="text-decoration: none; color: black" href="https://www.one0eight.in/products/shantamurti-shambhu-concept">Shop Now</a></button>
+                </div>
+            </div>
+          
+
+        </div>
+    </div>
+    <div class="button1">
+        <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+        <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+    <script>
+        let next = document.querySelector('.next');
+        let prev = document.querySelector('.prev');
+
+        next.addEventListener('click', function(){
+            let items = document.querySelectorAll('.item');
+            let container = document.querySelector('.slide1');
+
+            container.appendChild(items[0]);
+            items[items.length - 1].classList.add('slide-animation');
+        });
+
+        prev.addEventListener('click', function(){
+            let items = document.querySelectorAll('.item');
+            let container = document.querySelector('.slide1');
+
+            container.prepend(items[items.length - 1]);
+            items[0].classList.add('slide-animation');
+        });
+
+        // Detect scroll on mobile to change slides
+        let startY;
+        window.addEventListener('touchstart', function(event) {
+            startY = event.touches[0].clientY;
+        }, false);
+
+        window.addEventListener('touchmove', function(event) {
+            let endY = event.touches[0].clientY;
+            let deltaY = startY - endY;
+
+            if (Math.abs(deltaY) > 50) { // Adjust the threshold as needed
+                if (deltaY > 0) {
+                    next.click(); // Simulate next button click
+                } else {
+                    prev.click(); // Simulate previous button click
+                }
+            }
+        }, false);
+    </script>
+</body>
+</html>

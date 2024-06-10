@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three-Level Menu Example</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: #333;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-item {
+    position: relative;
+}
+
+.menu > .menu-item > a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.menu > .menu-item > a:hover {
+    background-color: #575757;
+}
+
+.drawer {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.submenu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.submenu-item {
+    position: relative;
+}
+
+.submenu > .submenu-item > a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.submenu > .submenu-item > a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: white;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+.dropdown-item {
+    position: relative;
+}
+
+.dropdown li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown li a:hover {
+    background-color: #f1f1f1;
+}
+
+.sub-dropdown {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    background-color: white;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.sub-dropdown li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.sub-dropdown li a:hover {
+    background-color: #f1f1f1;
+}
+
+    </style>
+    <nav>
+        <ul class="menu">
+            <li class="menu-item">
+                <a href="#" class="drawer-toggle">Shop by</a>
+                <div class="drawer">
+                    <ul class="submenu">
+                        <li class="submenu-item">
+                            <a href="#" class="submenu-toggle">Professional</a>
+                            <ul class="dropdown">
+                                <li class="dropdown-item">
+                                    <a href="#">Product 1</a>
+                                    <ul class="sub-dropdown">
+                                        <li><a href="#">Product 1-1</a></li>
+                                        <li><a href="#">Product 1-2</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#">Product 2</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#">Product 3</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="#" class="submenu-toggle">Entrepreneur</a>
+                            <ul class="dropdown">
+                                <li class="dropdown-item">
+                                    <a href="#">Product 4</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#">Product 5</a>
+                                </li>
+                                <li class="dropdown-item">
+                                    <a href="#">Product 6</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <!-- Add other main menu items here -->
+        </ul>
+    </nav>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var drawerToggle = document.querySelector('.drawer-toggle');
+    var drawer = document.querySelector('.drawer');
+    var submenuToggles = document.querySelectorAll('.submenu-toggle');
+    var dropdownToggles = document.querySelectorAll('.dropdown-item > a');
+
+    drawerToggle.addEventListener('click', function(event) {
+        event.stopPropagation();
+        closeAllDrawers();
+        drawer.style.display = 'block';
+    });
+
+    submenuToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function(event) {
+            event.stopPropagation();
+            var dropdown = this.nextElementSibling;
+            closeAllDropdowns();
+            dropdown.style.display = 'block';
+        });
+    });
+
+    dropdownToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function(event) {
+            event.stopPropagation();
+            var subDropdown = this.nextElementSibling;
+            closeAllSubDropdowns();
+            if (subDropdown) {
+                subDropdown.style.display = 'block';
+            }
+        });
+    });
+
+    document.addEventListener('click', function() {
+        closeAllDrawers();
+        closeAllDropdowns();
+        closeAllSubDropdowns();
+    });
+
+    function closeAllDrawers() {
+        var drawers = document.querySelectorAll('.drawer');
+        drawers.forEach(function(drawer) {
+            drawer.style.display = 'none';
+        });
+    }
+
+    function closeAllDropdowns() {
+        var dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(function(dropdown) {
+            dropdown.style.display = 'none';
+        });
+    }
+
+    function closeAllSubDropdowns() {
+        var subDropdowns = document.querySelectorAll('.sub-dropdown');
+        subDropdowns.forEach(function(subDropdown) {
+            subDropdown.style.display = 'none';
+        });
+    }
+});
+
+    </script>
+</body>
+</html>

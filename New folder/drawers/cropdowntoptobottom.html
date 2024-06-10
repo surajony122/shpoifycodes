@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top to Bottom Slider</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+      
+
+.slider {
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+    position: absolute;
+    top: -100%; /* Hide the slider above the viewport */
+    left: calc(50% - 100px); /* Center the slider horizontally */
+    transition: top 0.5s ease;
+}
+
+button {
+    margin-top: 150px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+ul.mn {
+            display: grid;
+            padding: 0;
+            gap: 5px;
+            /* flex-direction: column; */
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .mn li {
+            width: 100%;
+            text-align: center;
+            list-style: none;
+        }
+
+        .mn img {
+            border: 1px solid #FF9700;
+            border-radius: 5px;
+        }
+
+        .mn h1 {
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+    </style>
+    <div class="slider" id="slider">
+        <ul class="mn">
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+    <button id="slideButton">Slide Down</button>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('slideButton').addEventListener('click', function() {
+    var slider = document.getElementById('slider');
+    if (slider.style.top === '100px') {
+        slider.style.top = '-100%'; // Hide the slider above the viewport
+    } else {
+        slider.style.top = '100px'; // Position the slider within the viewport
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Collection Drawer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.collection-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.collection {
+    text-align: center;
+    cursor: pointer;
+}
+
+.collection img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.collection:hover img {
+    transform: scale(1.1);
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: left 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.drawer.open {
+    left: 0;
+}
+
+#closeDrawerButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.image-slider {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 80%;
+    padding: 10px;
+    gap: 10px;
+}
+
+.image-slider img {
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+    </style>
+    <div class="collection-gallery">
+        <div class="collection" data-collection="collection1">
+            <img src="https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360" alt="Collection 1">
+            <p>Collection 1</p>
+        </div>
+        <div class="collection" data-collection="collection2">
+            <img src="https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360" alt="Collection 2">
+            <p>Collection 2</p>
+        </div>
+        <div class="collection" data-collection="collection3">
+            <img src="https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360" alt="Collection 3">
+            <p>Collection 3</p>
+        </div>
+        <!-- Add more collections as needed -->
+    </div>
+
+    <div id="drawer" class="drawer">
+        <button id="closeDrawerButton">Close Drawer</button>
+        <div id="imageSlider" class="image-slider">
+            <!-- Slider images will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const collections = document.querySelectorAll('.collection');
+    const drawer = document.getElementById('drawer');
+    const closeDrawerButton = document.getElementById('closeDrawerButton');
+    const imageSlider = document.getElementById('imageSlider');
+
+    const imageCollections = {
+        collection1: [
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360',
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360',
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360'
+        ],
+        collection2: [
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360',
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360',
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360'
+        ],
+        collection3: [
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360',
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360',
+            'https://shoppersfortune.com/cdn/shop/products/ShoppersFortuneFloraofSpringCottonCushionCovers_2.jpg?v=1638969966&width=360'
+        ]
+        // Add more image collections as needed
+    };
+
+    collections.forEach(collection => {
+        collection.addEventListener('click', () => {
+            openDrawer(collection);
+        });
+    });
+
+    closeDrawerButton.addEventListener('click', () => {
+        closeDrawer();
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!drawer.contains(event.target) && !Array.from(collections).includes(event.target)) {
+            closeDrawer();
+        }
+    });
+
+    function openDrawer(collection) {
+        const collectionName = collection.dataset.collection;
+        const images = imageCollections[collectionName];
+
+        imageSlider.innerHTML = ''; // Clear existing images
+        images.forEach(src => {
+            const sliderImage = document.createElement('img');
+            sliderImage.src = src;
+            imageSlider.appendChild(sliderImage);
+        });
+
+        drawer.classList.add('open');
+    }
+
+    function closeDrawer() {
+        drawer.classList.remove('open');
+    }
+});
+
+    </script>
+</body>
+</html>

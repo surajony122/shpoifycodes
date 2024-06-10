@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            max-height: 0;
+            overflow: hidden;
+            transform: translateY(-10px);
+            transition: max-height 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .dropdown-content.show {
+            display: block;
+            max-height: 500px; /* Adjust this value based on the content size */
+            transform: translateY(0);
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        ul.mn {
+            display: grid;
+            padding: 0;
+            gap: 5px;
+            /* flex-direction: column; */
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .mn li {
+            width: 100%;
+            text-align: center;
+            list-style: none;
+        }
+
+        .mn img {
+            border: 1px solid #FF9700;
+            border-radius: 5px;
+        }
+
+        .mn h1 {
+            font-size: 15px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dropdown-container">
+    <div class="dropdown-button">▽</div>
+    <div class="dropdown-content">
+        <ul class="mn">
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg"
+                        alt="" width="100%">
+                    <!-- <h1>heading</h1> -->
+                </a>
+            </li>
+
+
+        </ul>
+    </div>
+</div>
+
+<p id="selected-value">Selected Value: None</p>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownButton = document.querySelector('.dropdown-button');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        const selectedValueDisplay = document.getElementById('selected-value');
+
+        // Toggle dropdown visibility
+        dropdownButton.addEventListener('click', function() {
+            dropdownContent.classList.toggle('show');
+        });
+
+        // Hide dropdown when clicking outside of it
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.dropdown-button')) {
+                dropdownContent.classList.remove('show');
+            }
+        });
+
+        // Handle selection of an option
+        dropdownContent.querySelectorAll('a').forEach(function(option) {
+            option.addEventListener('click', function(event) {
+                event.preventDefault();
+                const selectedValue = event.target.getAttribute('data-value');
+                dropdownButton.textContent = event.target.textContent;
+                selectedValueDisplay.textContent = `Selected Value: ${selectedValue}`;
+                dropdownContent.classList.remove('show');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <style>
+       .slider {
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+    position: absolute;
+    top: -100%; /* Hide the slider above the viewport */
+    left: 10; /* Center the slider horizontally */
+    transition: top 0.5s ease;
+}
+
+button {
+    /* margin-top: 150px; */
+    padding: 5px 5px;
+    font-size: 15px;
+}
+
+      
+     
+        ul.mn {
+    display: grid;
+    padding: 0;
+    gap: 5px;
+    /* flex-direction: column; */
+    grid-template-columns: 1fr 1fr;
+}
+
+        .mn li {
+            width: 100%;
+            text-align: center;
+            list-style: none;
+        }
+        .mn img{
+            border: 1px solid #FF9700;
+            border-radius: 5px;
+        }
+        .mn h1{
+            font-size: 15px;
+            text-decoration: none;
+        }
+        #closeDrawerButton {
+            position: absolute;
+            right: 5px;
+            padding: 5px 7px;
+    top: 2px;
+    border-radius: 50px;
+    font-size: 12px;
+
+        }
+
+     
+    </style>
+   <button id="slideButton">▽</button>
+
+    <!-- <div id="drawer" class="drawer">
+        <button id="closeDrawerButton">
+          X
+        </button> -->
+        <div class="slider" id="slider">
+        <ul class="mn">
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg" alt="" width="100%">
+                        <h1>Working Professional</h1>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg" alt="" width="100%">
+                        <h1>Entreprenuer</h1>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg" alt="" width="100%">
+                        <h1>Boss Chairs</h1>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg" alt="" width="100%">
+                        <h1>Consultant</h1>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg" alt="" width="100%">
+                         <h1>Specially Designed for doctors</h1>   
+                </a>
+            </li>
+          <li>
+                <a href="">
+                    <img src="https://shoppersfortune.com/cdn/shop/products/WhatsApp_Image_2018-07-31_at_1.12.59_PM_5.jpeg" alt="" width="100%">
+                         <h1>WFH Professionals</h1>   
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        document.getElementById('slideButton').addEventListener('click', function() {
+    var slider = document.getElementById('slider');
+    if (slider.style.top === '10px') {
+        slider.style.top = '-100%'; // Hide the slider above the viewport
+    } else {
+        slider.style.top = '10px'; // Position the slider within the viewport
+    }
+});
+
+    </script>
+</body>
+</html>
